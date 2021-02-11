@@ -40,5 +40,5 @@ Sur cette page, un simple get permet de récuperer tous les score qui sont déj�
 
 
 ## Librairie supplémentaire :
-Coté front : Moment JS pour les dates
+Coté front : Moment JS pour les dates  
 Coté back : https://github.com/nelmio/NelmioCorsBundle
