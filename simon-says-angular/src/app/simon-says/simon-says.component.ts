@@ -29,18 +29,16 @@ export class SimonSaysComponent implements OnInit {
   simonSequence: string[] = []  // suite de l'ordi
   userSequence: string[] = []   // suite du joueur
 
-  counter = 0
-  lost = false
+  lost = false //variable de verification
 
-  score: any;
+  score: any; //futures data envoyées
   startDate: any;
   endDate: any;
-
   username: any;
 
   ngOnInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#242424';
-    this.username = sessionStorage.getItem("username")
+    this.username = sessionStorage.getItem("username") //on récupère le pseudo de la session
   }
 
   click(color: string, player: string, clickDuration: number) {
@@ -104,23 +102,23 @@ export class SimonSaysComponent implements OnInit {
         break;
     }
 
-    if (player == "user") { // si c'est l'utilisateur qui choisit une couleur, on l'ajoute à sa suite
-      this.userSequence.push(color)
-      for (let i = 0; i < this.userSequence.length; i++) {
-        if (this.userSequence[i] != this.simonSequence[i] && this.simonSequence.length != 0) {
-          this.endDate = moment()
+    if (player == "user") { // si c'est l'utilisateur qui choisit une couleur,
+      this.userSequence.push(color) // on l'ajoute à sa suite
+      for (let i = 0; i < this.userSequence.length; i++) { // pour chaque couleur de la suite du joueur
+        if (this.userSequence[i] != this.simonSequence[i] && this.simonSequence.length != 0) { // si la partie est lancé (== que le tableau de simon n'est pas vide) et que les valeurs sont différente
+          this.endDate = moment() // on récupère la date
 
-          this.lost = true
-          this.endGame(this.startDate, this.endDate, this.simonSequence.length)
+          this.lost = true // on signale que le joueur a perdu
+          this.endGame(this.startDate, this.endDate, this.simonSequence.length) // on termine la partie
 
-          this.simonSequence = []
+          this.simonSequence = [] //on réinitialise les séquence
           this.userSequence = []
 
         }
       }
-      if (this.lost == false && this.userSequence.length == this.simonSequence.length) {
+      if (this.lost == false && this.userSequence.length == this.simonSequence.length) { // si le joueur n'a pas perdu et qu'il termine la séquence
         setTimeout(() => {
-          this.nextMove()
+          this.nextMove() // on passe au prochain coup
         }, 1000);
 
       }
@@ -129,31 +127,31 @@ export class SimonSaysComponent implements OnInit {
   }
 
   nextMove() {
-    this.userSequence = []
-    let color = this.getRandomColor()                   // choisit une couleur
-    this.simonSequence.push(color)
+    this.userSequence = []  // on vide la sequence du joueur
+    let color = this.getRandomColor()  // choisit une couleur
+    this.simonSequence.push(color) // on l'ajoute a la séquence de Simon
 
     const test =
       this.simonSequence.forEach((element, i) => {
-        setTimeout(() => { this.click(element, 'simon', 500) }, i * 1000);
+        setTimeout(() => { this.click(element, 'simon', 500) }, i * 1000); // ici on triche un peu a cause de la nature asynchrone de JS, on augmente le delais du clique a chaque fois sinon tous les clics de la séquence se font en meme temps
       });
   }
 
   start() {
 
-    this.startDate = moment()
+    this.startDate = moment() //on récupère la date
 
     this.lost = false; // variable de vérification 
-    this.simonSequence = []
+    this.simonSequence = [] // on initialise les séquences
     this.userSequence = []
 
 
-    let color = this.getRandomColor()                   // choisit une couleur
-    this.simonSequence.push(color)
-    this.click(color, 'simon', 500)
+    let color = this.getRandomColor()    // choisit une couleur
+    this.simonSequence.push(color) // ajoute a la séquence
+    this.click(color, 'simon', 500) // clic "visuel" sur la grille
   }
 
-  endGame(startDate: any, endDate: any, score: any) {
+  endGame(startDate: any, endDate: any, score: any) { //terminer la partie
     this.score = score
 
 
@@ -165,16 +163,16 @@ export class SimonSaysComponent implements OnInit {
     })
 
     this.http.post<any>('https://localhost:8000/score/new', {
-      score: this.score -1,
+      score: this.score -1, 
       username: this.username,
-      time: Math.round(endDate.diff(startDate) / 1000),
-      date: this.startDate.format('MMMM d, YYYY')
+      time: Math.round(endDate.diff(startDate) / 1000), // on divise par 1000 pour avoir le temps en seconde et on arrondi
+      date: this.startDate.format('MMMM d, YYYY') // date renvoyé au format string
     }).subscribe()
 
   }
 
   getRandomColor() {
-    const randomColor = this.colors[Math.floor(Math.random() * this.colors.length)]
+    const randomColor = this.colors[Math.floor(Math.random() * this.colors.length)] // on choisit une couleur aléatoirement dans le tableau, basé sur un random de l'index
     return randomColor
   }
 

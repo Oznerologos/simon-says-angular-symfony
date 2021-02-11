@@ -17,6 +17,6 @@ export class HomeComponent implements OnInit {
   }
 
   submit(){
-    sessionStorage.setItem("username", this.userName)
+    sessionStorage.setItem("username", this.userName) // on stock le pseudo en session
   }
 }
