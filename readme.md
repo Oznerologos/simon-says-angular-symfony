@@ -1,5 +1,5 @@
-#Bonjour
-##Voici ma doc pour le TP numéro 1 : Simon Says
+# Bonjour
+## Voici ma doc pour le TP numéro 1 : Simon Says
 
 Pour ce projet j'ai utilisé un back en symfony comme on l'a vu en cours alors que pour le front j'ai préféré utilisé Angular avec qui je suis bien plus a l'aise (d'autant plus que sur le TP concert, j'ai fait bien plus de symfony que de React).
 
@@ -23,7 +23,7 @@ ng serve
 pour lancer le serveur front
 
 
-##A propos du site :
+## A propos du site :
 A l'arrivée sur le site, le jouer est invité a choisir un pseudo pour jouer au jeux. Une fois écrit, son pseudo est sauvegarder dans la session pour pouvoir etre envoyé plus tard en base. Il n'y a pas de système de connexion.
 
 Une fois sur la page du jeu, le joueur doit cliquer sur "Start the game !" pour que Simon commence sa séquence.
@@ -39,6 +39,6 @@ Sur cette page, un simple get permet de récuperer tous les score qui sont déj�
 ```
 
 
-##Librairie supplémentaire :
+## Librairie supplémentaire :
 Coté front : Moment JS pour les dates
 Coté back : https://github.com/nelmio/NelmioCorsBundle
