@@ -1,0 +1,25 @@
+
+
+<h2>Welcome {{username}} !! Will you beat Simon ? <br> Click to find out !</h2>
+
+
+<div class="main">
+    <div [ngClass]="red" (click)="click('red', 'user', 150)"></div>
+    <div [ngClass]="orange" (click)="click('orange', 'user', 150)"></div>
+    <div [ngClass]="yellow" (click)="click('yellow', 'user', 150)"></div>
+
+
+    <div [ngClass]="green" (click)="click('green', 'user', 150)"></div>
+    <div [ngClass]="cyan" (click)="click('cyan', 'user', 150)"></div>
+    <div [ngClass]="blue" (click)="click('blue', 'user', 150)"></div>
+
+    <div [ngClass]="purple" (click)="click('purple', 'user', 150)"></div>
+    <div [ngClass]="violet" (click)="click('violet', 'user', 150)"></div>
+    <div [ngClass]="pink"(click)="click('pink', 'user', 150)"></div>
+</div>
+
+<button (click)= start()>Start the game ! </button>
+
+<div *ngIf="score">Congrats {{username}} !! You won {{score - 1}} rounds !!<br>Click <a routerLink="/ranking">HERE</a> to see your rank</div>
+
+<!-- <button (click)= logArrays()>log</button>   POUR AFFICHER LES TABLEAUX DE SIMON ET DU JOUEUR-->

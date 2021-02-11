@@ -1,0 +1,14 @@
+
+<div class="container">
+    <h1>WELCOME</h1>
+    <h2>In order to play, please enter your pseudo</h2>
+    <input [(ngModel)]="userName" type="text">
+    
+    <div *ngIf="userName">
+        <a routerLink="/simon" (click)="submit()" >PLAY</a>
+    </div>  
+</div>
+
+
+
+<!-- <a [routerLink]="['/simon']" [queryParams]="userName" *ngIf="userName"> Test</a> -->

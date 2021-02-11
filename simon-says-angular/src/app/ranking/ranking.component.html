@@ -1,0 +1,8 @@
+<h1>Hall of fame</h1>
+
+
+<ul>
+    <li *ngFor="let score of ranks; let i = index">
+        {{i + 1}} - {{score.username}} won {{score.score}} rounds in {{score.time}} seconds on {{score.date}}
+    </li>
+</ul>

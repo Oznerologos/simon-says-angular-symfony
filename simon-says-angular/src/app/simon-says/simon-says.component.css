@@ -1,0 +1,76 @@
+.main{
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.red{
+    background-color: red;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.green{
+    background-color: green;
+}
+
+.cyan{
+    background-color: cyan;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.purple{
+    background-color: purple;
+}
+
+.violet{
+    background-color: violet;
+}
+
+.pink{
+    background-color: pink;
+}
+
+.gray{
+    background-color: gray;
+}
+
+div{
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+}
+
+button{
+    text-align: center;
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    font-size: 50px;
+}
+
+h2{
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 10px;
+}
+
+div a{
+    text-decoration: none;
+    color: red;
+}
